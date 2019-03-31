@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context="com.mrabid.detectdiseases.SplashScreenActivity">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/_49sdp">
+
+        <ImageView
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:src="@drawable/logo"/>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#fff"
+        android:textStyle="italic"
+        android:textSize="26sp"
+        android:text="Detect Disease"/>
+
+    <ProgressBar
+        android:progressTint="#fff"
+        android:id="@+id/pb_progress_splash_screen_activity"
+        android:layout_marginTop="@dimen/_20sdp"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        android:progress="00"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tv_progress_splash_screen_activity"
+        android:textColor="#fff"
+        android:layout_gravity="center"
+        android:text="0%"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

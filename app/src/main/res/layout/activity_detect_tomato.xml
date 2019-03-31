@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".DetectTomatoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:contentInsetStart="0dp"
+        android:elevation="@dimen/_5sdp"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_back_toolbar_detect_activity"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:src="@drawable/ic_arrow_back"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorToolbar"
+                android:textSize="25sp"
+                android:text="Detect Disease"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_gravity="center"
+        android:id="@+id/img_detect_activity"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp" />
+
+    <Button
+        android:visibility="visible"
+        android:id="@+id/btn_process_detect_activity"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Process"/>
+
+    <TableLayout
+        android:weightSum="3"
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:text="Mean"
+                android:textColor="#000"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:text="Median"
+                android:textColor="#000"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:gravity="center"
+                android:text="Standart Deviasi"
+                android:textColor="#000"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/tv_mean_detect_activity"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:textColor="#000"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_median_detect_activity"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:textColor="#000"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_standartDeviasi_detect_activity"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:gravity="center"
+                android:textColor="#000"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:visibility="gone"
+        android:layout_margin="@dimen/_5sdp"
+        android:id="@+id/btn_show_graph_detect_activity"
+        android:text="See in location"
+        android:backgroundTint="@color/colorBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.jjoe64.graphview.GraphView
+        android:visibility="gone"
+        android:id="@+id/graph_detect_activity"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_200sdp" />
+
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/lnr_detail"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/_15sdp"
+            android:id="@+id/tv_nama_daun_detect_activity"
+            android:layout_width="wrap_content"
+            android:textSize="12pt"
+            android:text="Daun Kentang"
+            android:textColor="#000"
+            android:layout_height="wrap_content" />
+
+        <TableLayout
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <TableRow
+                android:layout_width="fill_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="8pt"
+                    android:text="Kondisi"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="8pt"
+                    android:text=": "
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_kondisi_detect_activity"
+                    android:layout_width="wrap_content"
+                    android:textSize="8pt"
+                    android:text="Late Blight"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text="Stadium "
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text=": "
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_stadium_detect_activity"
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text="Awal"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text="Penjelasan "
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text=": "
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_penjelasan_detect_activity"
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text="Daun kentang terkena penyakit late blight dalam stadium awal, karena teridentifikasi bentuk penyakit melingkar pada lukanya, namun luka hanya pada sediki bagian daun"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text="Saran "
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text=": "
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_saran_detect_activity"
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text="Pangkas daun yang sakit\nKeringkan tanah\nLakukan Aplikasi fungisida(mankozeb,propineb)15kaliperiode"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+            <TableRow
+                android:layout_width="fill_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text="Penyebab"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text=": "
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_sebab_detect_activity"
+                    android:layout_width="wrap_content"
+                    android:textSize="6pt"
+                    android:text="Pythopthora infestan"
+                    android:textColor="#000"
+                    android:layout_height="wrap_content" />
+            </TableRow>
+        </TableLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

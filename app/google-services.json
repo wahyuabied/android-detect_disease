@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "270970027130",
+    "firebase_url": "https://detectdisease.firebaseio.com",
+    "project_id": "detectdisease",
+    "storage_bucket": "detectdisease.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270970027130:android:953d83dcbc8ad37e",
+        "android_client_info": {
+          "package_name": "com.mrabid.detectdiseases"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270970027130-gjm0g5sgmu4aglkav9jmrnmu5ftr9v00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDISGJafuKNb7246o1h58H5f5WVBRCRFsw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UI.Penyakit.DetailPenyakitActivity">
+
+    <android.support.v7.widget.Toolbar
+        app:contentInsetStart="0dp"
+        android:id="@+id/toolbar"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_140sdp">
+        <RelativeLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:src="@drawable/ic_arrow_back"/>
+
+            <TextView
+                android:paddingTop="@dimen/_6sdp"
+                android:id="@+id/tv_judul_detailPenyakit"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="10pt"
+                android:layout_height="@dimen/_30sdp" />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_detailPenyakitActivity"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:elevation="@dimen/_5sdp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <ImageView
+            android:padding="@dimen/_5sdp"
+            android:id="@+id/img_detailPenyakitActivity"
+            android:scaleType="fitXY"
+            android:layout_width="@dimen/_170sdp"
+            android:layout_gravity="center"
+            android:layout_height="@dimen/_170sdp" />
+    </android.support.v7.widget.CardView>
+
+    <ScrollView
+        android:layout_below="@+id/cv_detailPenyakitActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="8pt"
+                android:text="Deskripsi :"/>
+
+            <TextView
+                android:id="@+id/tv_deskripsi_detailPenyakitActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="8pt"
+                android:text="Gejala :"/>
+
+            <TextView
+                android:id="@+id/tv_gejala_detailPenyakitActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="8pt"
+                android:text="Solusi :"/>
+
+            <TextView
+                android:id="@+id/tv_solusi_detailPenyakitActivity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

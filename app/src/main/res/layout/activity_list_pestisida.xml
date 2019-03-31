@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".UI.Pestisida.ListPestisidaActivity">
+
+    <android.support.v7.widget.Toolbar
+        app:contentInsetStart="0dp"
+        android:id="@+id/toolbar"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_100sdp">
+        <RelativeLayout
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:src="@drawable/ic_arrow_back"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_toRightOf="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:text="Pestisida"
+                android:textColor="#fff"
+                android:textSize="12pt"
+                android:layout_height="@dimen/_30sdp" />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <ProgressBar
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:id="@+id/progress"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
+        android:layout_marginTop="@dimen/_55sdp"
+        android:id="@+id/rv_listPestisidaActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

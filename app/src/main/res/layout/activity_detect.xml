@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.mrabid.detectdiseases.UI.Detect.DetectActivity">
+
+   <LinearLayout
+       android:background="@drawable/bg2"
+       android:orientation="vertical"
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/_260sdp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp">
+            <ImageView
+                android:id="@+id/img_back_toolbar_detect_activity"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:src="@drawable/ic_arrow_back"/>
+
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                android:text="Detect Disease"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/linear1_detectActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ProgressBar
+            android:visibility="invisible"
+            android:id="@+id/progressBar_detectActivity"
+            android:indeterminateTint="@color/colorRed"
+            android:layout_centerHorizontal="true"
+            android:layout_width="@dimen/_170sdp"
+            android:layout_height="@dimen/_170sdp" />
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_image_detectActivity"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_65sdp"
+            android:padding="@dimen/_2sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardElevation="@dimen/_5sdp">
+            <ImageView
+                android:id="@+id/img_detect_activity"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_130sdp" />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_photo_change_image_detectActivity"
+            android:layout_alignBottom="@+id/cv_image_detectActivity"
+            android:layout_alignEnd="@+id/cv_image_detectActivity"
+            app:cardElevation="@dimen/_10sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            app:cardBackgroundColor="@color/colorAccent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/_20sdp">
+            <ImageView
+                android:padding="@dimen/_6sdp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:src="@drawable/ic_camera_enhance_black_24dp"/>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:weightSum="2"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:visibility="visible"
+            android:layout_weight="1"
+            android:id="@+id/btn_process_detect_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="7pt"
+            android:backgroundTint="#fff"
+            android:text="Process"/>
+
+        <Button
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:textSize="7pt"
+            android:id="@+id/btn_show_graph_detect_activity"
+            android:text="See Graph"
+            android:textColor="#fff"
+            android:backgroundTint="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!--<TableLayout
+        android:id="@+id/tabLayout_nilaiData_DetectActivity"
+        android:weightSum="3"
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableRow>
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:textStyle="bold"
+                android:text="Mean"
+                android:textColor="#fff"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:textStyle="bold"
+                android:text="Median"
+                android:textColor="#fff"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:gravity="center"
+                android:text="Standart Deviasi"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_height="wrap_content" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:id="@+id/tv_mean_detect_activity"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:textColor="#fff"
+                android:text="0"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_median_detect_activity"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:textColor="#fff"
+                android:text="0"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_standartDeviasi_detect_activity"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:textSize="8pt"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:text="0"
+                android:layout_height="wrap_content" />
+        </TableRow>
+    </TableLayout>-->
+   </LinearLayout>
+
+
+    <android.support.design.widget.TabLayout
+        android:elevation="@dimen/_5sdp"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/colorAccent"
+        android:id="@+id/tbl_detectActivity"
+        android:layout_gravity="bottom"
+        app:tabSelectedTextColor="#848181"
+        app:tabTextColor="#d9cdcd"
+        android:background="#fff"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_width="match_parent"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_detectActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

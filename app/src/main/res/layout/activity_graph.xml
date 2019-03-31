@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="5"
+    tools:context=".UI.GraphActivity">
+
+    <LinearLayout
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/linear_graph_activity"
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_gravity="left"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:background="@drawable/ic_oval"
+                android:backgroundTint="@color/colorPrimary"/>
+            <TextView
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Late Blight"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="left"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:background="@drawable/ic_oval"
+                android:backgroundTint="@color/colorGreen"/>
+            <TextView
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Sehat"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_gravity="left"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:background="@drawable/ic_oval"
+                android:backgroundTint="@color/colorRed"/>
+            <TextView
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Early Blight"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_gravity="left"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:background="@drawable/ic_oval"
+                android:backgroundTint="@color/colorYellow"/>
+            <TextView
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Your Image"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph_graph_activity"
+        android:layout_toLeftOf="@+id/linear_graph_activity"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>
