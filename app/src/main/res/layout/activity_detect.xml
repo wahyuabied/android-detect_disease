@@ -26,12 +26,12 @@
                 android:src="@drawable/ic_arrow_back"/>
 
             <TextView
+                android:id="@+id/tv_judul_detectActivity"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:textColor="#fff"
                 android:textSize="25sp"
-                android:text="Detect Disease"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
     <RelativeLayout
@@ -76,6 +76,17 @@
                 android:layout_height="@dimen/_40sdp"
                 android:src="@drawable/ic_camera_enhance_black_24dp"/>
         </android.support.v7.widget.CardView>
+
+        <CheckBox
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:id="@+id/cb_detectActivity_autoLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#fff"
+            android:textColor="#ffff"
+            android:text="Auto Level"/>
     </RelativeLayout>
     <LinearLayout
         android:gravity="center"
@@ -106,71 +117,6 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <!--<TableLayout
-        android:id="@+id/tabLayout_nilaiData_DetectActivity"
-        android:weightSum="3"
-        android:padding="@dimen/_10sdp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TableRow>
-            <TextView
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textSize="8pt"
-                android:textStyle="bold"
-                android:text="Mean"
-                android:textColor="#fff"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textSize="8pt"
-                android:textStyle="bold"
-                android:text="Median"
-                android:textColor="#fff"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textSize="8pt"
-                android:gravity="center"
-                android:text="Standart Deviasi"
-                android:textStyle="bold"
-                android:textColor="#fff"
-                android:layout_height="wrap_content" />
-        </TableRow>
-        <TableRow>
-            <TextView
-                android:id="@+id/tv_mean_detect_activity"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textSize="8pt"
-                android:textColor="#fff"
-                android:text="0"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/tv_median_detect_activity"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textSize="8pt"
-                android:textColor="#fff"
-                android:text="0"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/tv_standartDeviasi_detect_activity"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:textSize="8pt"
-                android:gravity="center"
-                android:textColor="#fff"
-                android:text="0"
-                android:layout_height="wrap_content" />
-        </TableRow>
-    </TableLayout>-->
    </LinearLayout>
 
 

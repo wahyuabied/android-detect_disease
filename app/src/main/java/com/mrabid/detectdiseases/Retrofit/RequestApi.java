@@ -9,6 +9,7 @@ import com.mrabid.detectdiseases.Model.Weather;
 import java.util.ArrayList;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
@@ -29,7 +30,11 @@ public interface RequestApi {
 
     @Multipart
     @POST("api/feature-extraction-kentang")
-    Call<FeatureExtraction> getFeatureExtraction(@Part MultipartBody.Part image);
+    Call<FeatureExtraction> getFeatureExtraction(@Part MultipartBody.Part image,@Part("autoLevel") RequestBody autoLevel);
+
+    @Multipart
+    @POST("api/feature-extraction-tomat")
+    Call<FeatureExtraction> getFeatureExtractionTomat(@Part MultipartBody.Part image);
 
     @GET("api/Graph-Disease")
     Call<Graphic> getGraph();

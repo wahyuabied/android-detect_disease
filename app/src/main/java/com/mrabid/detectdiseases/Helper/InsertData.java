@@ -74,7 +74,27 @@ public class InsertData {
         ArrayList<Penyakit> penyakit = new ArrayList<>();
         penyakit.add(new Penyakit("Early","Early Blight","Alternaria solani is a fungal pathogen, that produces a disease in tomato and potato plants called early blight. The pathogen produces distinctive (bullseye) patterned leaf spots and can also cause stem lesions and fruit rot on tomato and tuber blight on potato. Despite the name (early) foliar symptoms usually occur on older leaves. If uncontrolled, early blight can cause significant yield reductions. Primary methods of controlling this disease include preventing long periods of wetness on leaf surfaces and applying fungicides. Geographically, A. solani is problematic in tomato production areas east of the Rocky Mountains and is generally not an issue in the less humid Pacific or inter-mountain regions. A. solani is also present in most potato production regions every year but has a significant effect on yield only when frequent wetting of foliage favors symptom development"));
         penyakit.add(new Penyakit("Late","Late Blight","Phytophthora infestans is an oomycete or water mold, a microorganism that causes the serious potato and tomato disease known as late blight or potato blight. (Early blight, caused by Alternaria solani, is also often called (potato blight).) Late blight was a major culprit in the 1840s European, the 1845 Irish, and the 1846 Highland potato famines. The organism can also infect some other members of the Solanaceae. The pathogen is favored by moist, cool environments: sporulation is optimal at 12–18 C in water-saturated or nearly saturated environments, and zoospore production is favored at temperatures below 15 C. Lesion growth rates are typically optimal at a slightly warmer temperature range of 20 to 24 C. "));
+
         return penyakit;
+    }
+
+    public static ArrayList<String> gejalaEarly(){
+        ArrayList<String> data = new ArrayList<>();
+        data.add("Awalnya bintik-bintik gelap kecil terbentuk pada dedaunan yang lebih tua di dekat tanah");
+        data.add("Bintik daun bulat, berwarna coklat dan dapat tumbuh hingga setengah inci diameternya");
+        data.add("Bintik-bintik yang lebih besar memiliki target seperti cincin konsentris dan jaringan di sekitar bintik-bintik sering berubah menjadi kuning");
+        data.add("Daun yang terinfeksi parah berubah menjadi cokelat dan rontok, atau mati, daun kering dapat melekat pada batang");
+        return data;
+    }
+
+    public static ArrayList<String> gejalaLate(){
+        ArrayList<String> data = new ArrayList<>();
+        data.add("Daun memiliki bercak coklat besar dan gelap dengan tepi abu-abu hijau");
+        data.add("Infeksi berkembang melalui selebaran dan tangkai daun, menghasilkan sebagian besar dedaunan coklat kering");
+        data.add("Bercak-bercak tegas, berwarna cokelat tua, melingkar tumbuh menutupi sebagian besar buah. Bintik-bintik dapat menjadi lembek saat bakteri sekunder menyerang");
+        data.add("Dalam kelembaban tinggi, pertumbuhan jamur putih bubuk tipis muncul pada daun, buah dan batang yang terinfeksi");
+        data.add("Dalam cuaca dingin dan basah, seluruh bidang berubah menjadi cokelat dan layu seakan terkena salju.");
+        return data;
     }
 
 }

@@ -70,7 +70,7 @@ public class PestisidaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         public ViewHolderTwo(View inflate) {
             super(inflate);
-            cardView = inflate.findViewById(R.id.cv_itemPestisida);
+            cardView = inflate.findViewById(R.id.cv_itemPenyakit);
             judul = inflate.findViewById(R.id.tv_judul_itemPestisida);
             deskripsi = inflate.findViewById(R.id.tv_deskripsi_itemPestisida);
             imageView = inflate.findViewById(R.id.img_itemPestisida);
@@ -100,6 +100,7 @@ public class PestisidaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     Intent i = new Intent(context,PestisidaActivity.class);
                     i.putExtra("judul",p.getNama());
                     i.putExtra("url",p.getUrl());
+                    i.putExtra("tokopedia_search",p.getTokopedia_search());
                     context.startActivity(i);
                 }
             });
@@ -119,6 +120,7 @@ public class PestisidaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     Intent i = new Intent(context,PestisidaActivity.class);
                     i.putExtra("url",p.getUrl());
                     i.putExtra("judul",p.getNama());
+                    i.putExtra("tokopedia_search",p.getTokopedia_search());
                     context.startActivity(i);
                 }
             });

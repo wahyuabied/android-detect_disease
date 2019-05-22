@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@color/colorAccent"
+        android:layout_width="@dimen/_240sdp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:padding="@dimen/_3sdp"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/ic_info_outline_black_24dp"/>
+        <TextView
+            android:gravity="center"
+            android:text="Information"
+            android:textColor="#ffff"
+            android:textSize="9pt"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_50sdp" />
+        <ImageView
+            android:id="@+id/iv_close_dialogautoLevel"
+            android:layout_marginLeft="@dimen/_80sdp"
+            android:layout_gravity="right"
+            android:padding="@dimen/_3sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:tint="#fff"
+            android:layout_height="@dimen/_50sdp"
+            android:src="@drawable/ic_close_black_24dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:padding="@dimen/_10sdp"
+        android:textColor="#000"
+        android:id="@+id/tv_autoLevel_dialogautoLevel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <CheckBox
+        android:id="@+id/cb_autoLevel_jangan"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:text="Jangan ingatkan saya lagi"/>
+
+</LinearLayout>

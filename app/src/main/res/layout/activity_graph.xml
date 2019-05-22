@@ -87,6 +87,16 @@
 
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/iv_note_graphActivity"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_event_note_black_24dp"
+        android:tint="@color/colorAccent"
+        android:layout_height="@dimen/_30sdp" />
+
+
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph_graph_activity"
         android:layout_toLeftOf="@+id/linear_graph_activity"

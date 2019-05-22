@@ -3,6 +3,7 @@ package com.mrabid.detectdiseases.Helper;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 
@@ -12,6 +13,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.lang.reflect.Type;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,4 +73,44 @@ public class PreProcessing {
         Type type = new TypeToken<ArrayList<ArrayList<String>>>(){}.getType();
         return gson.fromJson(json,type);
     }
+
+    public static String kelvinCelcius(String kelvin){
+        Double suhu =  Double.parseDouble(kelvin);
+        suhu = Double.parseDouble(new DecimalFormat("##.###").format(suhu-273.15));
+        return suhu+"";
+    }
+
+
+    public static boolean fasePenyebaranLate (String kelvin){
+        Double suhu = Double.parseDouble(PreProcessing.kelvinCelcius(kelvin));
+        if(suhu>15 && suhu<22){
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean fasePenyebaranEarly (String kelvin){
+        Double suhu = Double.parseDouble(PreProcessing.kelvinCelcius(kelvin));
+        if(suhu>26 && suhu<30){
+            return true;
+        }
+        return false;
+    }
+
+    public static int[] isPlant (Bitmap bitmap){
+        int [] color = new int[3];
+        for(int i=0;i<bitmap.getHeight();i++){
+            for(int j=0;j<bitmap.getWidth();j++){
+                int pixel = bitmap.getPixel(i,j);
+                color[0]=color[0]+Color.red(pixel);
+                color[1]=color[1]+Color.green(pixel);
+                color[2]=color[2]+Color.blue(pixel);
+            }
+        }
+        color[0] = color[0]/(256*256);
+        color[1] = color[1]/(256*256);
+        color[2] = color[2]/(256*256);
+        return color;
+    }
+
 }

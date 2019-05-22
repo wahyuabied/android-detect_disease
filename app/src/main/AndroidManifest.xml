@@ -17,14 +17,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".UI.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".UI.MainActivity" />
         <activity
             android:name=".UI.Detect.DetectActivity"
             android:launchMode="singleTop" />
@@ -32,9 +32,6 @@
             android:name=".UI.GraphActivity"
             android:launchMode="singleTop"
             android:screenOrientation="landscape" />
-        <activity
-            android:name=".DetectTomatoActivity"
-            android:launchMode="singleTop" />
         <activity
             android:name=".UI.Penyakit.PenyakitActivity"
             android:launchMode="singleTop" />
@@ -44,7 +41,11 @@
         <activity
             android:name=".UI.Pestisida.PestisidaActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".UI.Pestisida.ListPestisidaActivity"></activity>
+        <activity
+            android:name=".UI.Pestisida.ListPestisidaActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".UI.InformActivity"
+            android:launchMode="singleTop"></activity>
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ public class Pestisida {
     private String deskripsi;
     private String gambar;
     private String url;
+    private String tokopedia_search;
 
 
     public Pestisida(Pestisida pestisida) {
@@ -14,14 +15,15 @@ public class Pestisida {
         this.deskripsi = pestisida.getDeskripsi();
         this.gambar = pestisida.getGambar();
         this.url = pestisida.getUrl();
+        this.tokopedia_search = pestisida.getTokopedia_search();
     }
 
-    public Pestisida(int id, String nama, String deskripsi, String gambar, String url) {
-        this.id = id;
-        this.nama = nama;
-        this.deskripsi = deskripsi;
-        this.gambar = gambar;
-        this.url = url;
+    public String getTokopedia_search() {
+        return tokopedia_search;
+    }
+
+    public void setTokopedia_search(String tokopedia_search) {
+        this.tokopedia_search = tokopedia_search;
     }
 
     public int getId() {

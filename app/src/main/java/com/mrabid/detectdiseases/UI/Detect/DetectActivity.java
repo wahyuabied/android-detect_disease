@@ -3,6 +3,7 @@ package com.mrabid.detectdiseases.UI.Detect;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,19 +18,18 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
-import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.jjoe64.graphview.GraphView;
 import com.mrabid.detectdiseases.Fragment.DetailFragment;
 import com.mrabid.detectdiseases.Fragment.SolutionFragment;
 import com.mrabid.detectdiseases.Helper.PreProcessing;
@@ -45,7 +45,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -57,13 +56,11 @@ import retrofit2.Response;
 public class DetectActivity extends AppCompatActivity {
 
     ImageView imageView,back;
-    GraphView graphView;
-    TextView kondisi,stadium,penjelasan,saran,sebab;
+    TextView judul;
     Double meanData,medianData,stDeviasiData;
     Bitmap resizedBitmap,bitmap;
     Button btn, showGraph;
     ProgressBar progressBar;
-    LinearLayout linearLayout;
     FeatureExtraction data;
     SharedPref sharedPrefeLocal;
     SharedPreferences sharedPref;
@@ -72,11 +69,14 @@ public class DetectActivity extends AppCompatActivity {
     Uri uri;
     Graphic grafikPenyakit;
     ViewPager viewPager;
-    ArrayList<ArrayList<String>> solution;
     TabLayout tabLayout;
+    CheckBox cbAutoLevel;
     DetectAdapter adapter;
-
-    DetailFragment detailFragment = new DetailFragment();
+    RequestBody autoLevelRB;
+    MultipartBody.Part body;
+    AlertDialog.Builder alert,alertPlant ;
+    EditText edittext ;
+    String autoLevel = "no";
 
     @SuppressLint({"WrongConstant", "ResourceType"})
     @Override
@@ -88,24 +88,20 @@ public class DetectActivity extends AppCompatActivity {
         prefs = sharedPref.edit();
         sharedPrefeLocal = new SharedPref(DetectActivity.this);
 
-
         progressBar = findViewById(R.id.progressBar_detectActivity);
         viewPager = findViewById(R.id.vp_detectActivity);
+        cbAutoLevel = findViewById(R.id.cb_detectActivity_autoLevel);
         tabLayout = findViewById(R.id.tbl_detectActivity);
         back = findViewById(R.id.img_back_toolbar_detect_activity);
         changeImage = findViewById(R.id.cv_photo_change_image_detectActivity);
         imageView = findViewById(R.id.img_detect_activity);
-        linearLayout = findViewById(R.id.lnr_detail);
         btn = findViewById(R.id.btn_process_detect_activity);
-        kondisi = findViewById(R.id.tv_kondisi_detect_activity);
-        stadium = findViewById(R.id.tv_stadium_detect_activity);
-        penjelasan = findViewById(R.id.tv_penjelasan_detect_activity);
-        graphView = findViewById(R.id.graph_detect_activity);
-        saran = findViewById(R.id.tv_saran_detect_activity);
-        sebab = findViewById(R.id.tv_sebab_detect_activity);
         showGraph = findViewById(R.id.btn_show_graph_detect_activity);
+        judul = findViewById(R.id.tv_judul_detectActivity);
         //set Adapter
         adapter = new DetectAdapter(getSupportFragmentManager(), DetectActivity.this);
+
+        judul.setText("Deteksi Penyakit "+getIntent().getStringExtra("tanaman"));
 
         bitmap = (Bitmap)getIntent().getParcelableExtra("image");
             if(bitmap==null){
@@ -138,66 +134,47 @@ public class DetectActivity extends AppCompatActivity {
             }
         });
 
+        cbAutoLevel.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    if(sharedPref.getString("information","yes").equalsIgnoreCase("yes")){
+                        autoLevelDialog();
+                        autoLevel = "yes";
+                    }
+                }else
+                    autoLevel="no";
+            }
+        });
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(DetectActivity.this);
-                final EditText edittext = new EditText(DetectActivity.this);
+                alert = new AlertDialog.Builder(DetectActivity.this);
+                alertPlant = new AlertDialog.Builder(DetectActivity.this);
+                alertPlant.setCancelable(false);
+                alert.setCancelable(false);
+                edittext = new EditText(DetectActivity.this);
                 progressBar.setVisibility(View.VISIBLE);
-                alert.setTitle("Berapa Umur Tanaman ini ?(bulan)");
-                alert.setView(edittext);
-                alert.setPositiveButton("Kirim", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        //remove all content adapter
-                        if (ActivityCompat.checkSelfPermission(DetectActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                            Toast.makeText(DetectActivity.this, "Maaf kami perlu akses untuk menyimpan file", Toast.LENGTH_SHORT).show();
+                int color[] = PreProcessing.isPlant(resizedBitmap);
+                if(color[1]<color[0] || color[1]<color[2]){
+                    alertPlant.setTitle("Daun tidak terdeteksi apakah ingin tetap mengirim gambar ?");
+                    alertPlant.setPositiveButton("Kirim", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            checkPlant();
                         }
-                        Editable YouEditTextValue = edittext.getText();
-                        File file =  PreProcessing.bitmapToFile(resizedBitmap);
-                        RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
-                        MultipartBody.Part body = MultipartBody.Part.createFormData("image", file.getName(), reqFile);
-
-                        Services.buildPicture().getFeatureExtraction(body).enqueue(new Callback<FeatureExtraction>() {
-                            @Override
-                            public void onResponse(Call<FeatureExtraction> call, Response<FeatureExtraction> response) {
-                                data = new FeatureExtraction(response.body());
-                                meanData = ChangeComma(new DecimalFormat("##.##").format(Double.parseDouble(response.body().getMean())));
-                                medianData = ChangeComma(new DecimalFormat("##.##").format(Double.parseDouble(response.body().getMedian())));
-                                stDeviasiData = ChangeComma(new DecimalFormat("##.##").format(Double.parseDouble(response.body().getStandart_deviasi())));
-                                showGraph.setVisibility(View.VISIBLE);
-
-                                //send umur daun dan data with shared pref
-                                prefs.putString("umur",edittext.getText()+"");
-                                prefs.putString("daun","Kentang");
-                                prefs.putString("featureExtraction",new Gson().toJson(data));
-                                prefs.apply();
-
-//                                sendSolution(data);
-                                PreProcessing.saveArrayList("solusi",solution,DetectActivity.this);
-
-                                viewPager.setAdapter(adapter);
-                                tabLayout.setupWithViewPager(viewPager);
-
-                                progressBar.setVisibility(View.INVISIBLE);
-                            }
-
-                            @Override
-                            public void onFailure(Call<FeatureExtraction> call, Throwable t) {
-                                progressBar.setVisibility(View.INVISIBLE);
-                                Log.e("Response",t.toString());
-
-                            }
-                        });
-
-
-                    }
-                });
-                alert.setNegativeButton("Tidak Jadi", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-                        progressBar.setVisibility(View.INVISIBLE);
-                    }
-                });
-                alert.show();
+                    });
+                    alertPlant.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+                    });
+                    alertPlant.show();
+                }else {
+                    checkPlant();
+                }
             }
         });
 
@@ -209,6 +186,7 @@ public class DetectActivity extends AppCompatActivity {
                     public void onSuccess(Boolean result) {
                         if(result){
                             Intent i = new Intent(DetectActivity.this,GraphActivity.class);
+                            i.putExtra("penyakit",data.getPenyakit());
                             i.putExtra("graph",grafikPenyakit);
                             i.putExtra("dataMean",meanData+"");
                             i.putExtra("dataStDeviasi",stDeviasiData+"");
@@ -283,5 +261,108 @@ public class DetectActivity extends AppCompatActivity {
             Log.e("MainActivity", "Null selected");
         }
     }
+
+    public void sendImage(final String tanaman){
+        if(tanaman.equalsIgnoreCase("Kentang")){
+            autoLevelRB = RequestBody.create(MediaType.parse("text/plain"), autoLevel);
+            Services.buildPicture().getFeatureExtraction(body,autoLevelRB).enqueue(new Callback<FeatureExtraction>() {
+                @Override
+                public void onResponse(Call<FeatureExtraction> call, Response<FeatureExtraction> response) {
+                    data = new FeatureExtraction(response.body());
+                    meanData = ChangeComma(new DecimalFormat("##.##").format(Double.parseDouble(response.body().getMean())));
+                    medianData = ChangeComma(new DecimalFormat("##.##").format(Double.parseDouble(response.body().getMedian())));
+                    stDeviasiData = ChangeComma(new DecimalFormat("##.##").format(Double.parseDouble(response.body().getStandart_deviasi())));
+                    showGraph.setVisibility(View.VISIBLE);
+
+                    //send umur daun dan data with shared pref
+                    prefs.putString("daun",tanaman);
+                    prefs.putString("featureExtraction",new Gson().toJson(data));
+                    prefs.apply();
+                    viewPager.setAdapter(adapter);
+                    tabLayout.setupWithViewPager(viewPager);
+
+                    progressBar.setVisibility(View.INVISIBLE);
+                }
+
+                @Override
+                public void onFailure(Call<FeatureExtraction> call, Throwable t) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    Log.e("Response",t.toString());
+
+                }
+            });
+        }else{
+            Services.buildPicture().getFeatureExtractionTomat(body).enqueue(new Callback<FeatureExtraction>() {
+                @Override
+                public void onResponse(Call<FeatureExtraction> call, Response<FeatureExtraction> response) {
+                    data = new FeatureExtraction(response.body());
+                    meanData = ChangeComma(new DecimalFormat("##.##").format(Double.parseDouble(response.body().getMean())));
+                    medianData = ChangeComma(new DecimalFormat("##.##").format(Double.parseDouble(response.body().getMedian())));
+                    stDeviasiData = ChangeComma(new DecimalFormat("##.##").format(Double.parseDouble(response.body().getStandart_deviasi())));
+                    showGraph.setVisibility(View.VISIBLE);
+
+                    //send umur daun dan data with shared pref
+                    prefs.putString("daun",tanaman);
+                    prefs.putString("featureExtraction",new Gson().toJson(data));
+                    prefs.apply();
+                    viewPager.setAdapter(adapter);
+                    tabLayout.setupWithViewPager(viewPager);
+
+                    progressBar.setVisibility(View.INVISIBLE);
+                }
+
+                @Override
+                public void onFailure(Call<FeatureExtraction> call, Throwable t) {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    Log.e("Response",t.toString());
+
+                }
+            });
+        }
+    }
+
+    public void checkPlant(){
+        if (ActivityCompat.checkSelfPermission(DetectActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(DetectActivity.this, "Maaf kami perlu akses untuk menyimpan file", Toast.LENGTH_SHORT).show();
+        }
+        File file =  PreProcessing.bitmapToFile(resizedBitmap);
+        RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
+        body = MultipartBody.Part.createFormData("image", file.getName(), reqFile);
+
+        sendImage(getIntent().getStringExtra("tanaman"));
+    }
+
+    public void autoLevelDialog(){
+        final Dialog dialog = new Dialog(DetectActivity.this);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialog_autolevel);
+
+        ImageView close = dialog.findViewById(R.id.iv_close_dialogautoLevel);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        TextView content = dialog.findViewById(R.id.tv_autoLevel_dialogautoLevel);
+        content.setText("Aplikasi akan menyesuaikan kecerahan foto untuk proses (recommend kamera HP)");
+        CheckBox cbIngatkan = dialog.findViewById(R.id.cb_autoLevel_jangan);
+        cbIngatkan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    prefs.putString("information","no");
+                    prefs.apply();
+                }else{
+                    prefs.putString("information","yes");
+                    prefs.apply();
+                }
+            }
+        });
+
+        dialog.show();
+
+    }
+
 
 }

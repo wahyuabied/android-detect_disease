@@ -1,4 +1,4 @@
-package com.mrabid.detectdiseases;
+package com.mrabid.detectdiseases.UI;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -28,8 +28,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mrabid.detectdiseases.Helper.PreProcessing;
 import com.mrabid.detectdiseases.Helper.SharedPref;
 import com.mrabid.detectdiseases.Model.Weather;
+import com.mrabid.detectdiseases.R;
 import com.mrabid.detectdiseases.Retrofit.CallbackRetrofit;
 import com.mrabid.detectdiseases.Retrofit.RequestApi;
 import com.mrabid.detectdiseases.Retrofit.Services;
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     CardView kentang,tomato,penyakit,pestisida;
     SharedPref sharedPref;
     TextView date, temperature, country, city, humidity, windSpeed,main;
-    ImageView imageView;
+    ImageView imageView,info;
     String latitude = "", longitude = "";
     LocationManager locationManager;
     Location tempLocation;
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         tomato = findViewById(R.id.cv_detect_tomato_main_activity);
         penyakit = findViewById(R.id.cv_penyakit_main_activity);
         pestisida = findViewById(R.id.cv_pestisida_main_activity);
+        info = findViewById(R.id.iv_info_mainActivity);
         //Body Code
         kentang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +92,13 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,PenyakitActivity.class));
+            }
+        });
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,InformActivity.class));
             }
         });
 
@@ -132,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
                         imageView.setImageDrawable(drawable);
                         try {
                             main.setText(cuaca.getWeather().get(0).getMain()+"");
-                            temperature.setText(cuaca.getMain().getTemp()+" "+(char)0x00B0+"K");
+                            temperature.setText(PreProcessing.kelvinCelcius(cuaca.getMain().getTemp()+"")+" "+(char)0x00B0+"C");
                             humidity.setText(cuaca.getMain().getHumidity()+"");
                             windSpeed.setText(cuaca.getWind().getSpeed()+"");
                             sharedPref.saveData("suhu",cuaca.getMain().getTemp()+"");
@@ -221,6 +231,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             if (requestCode == 0) {
                 Bitmap selectedImage = (Bitmap) imageReturnedIntent.getExtras().get("data");
                 i.putExtra("image", selectedImage);
+                i.putExtra("tanaman","Kentang");
                 try{
                     if(selectedImage!=null){ startActivity(i); }
                 }catch (Exception e){
@@ -229,20 +240,23 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             } else if(requestCode == 1) {
                 Uri uri = imageReturnedIntent.getData();
                 i.putExtra("uri", uri);
+                i.putExtra("tanaman","Kentang");
                 startActivity(i);
             }else if(requestCode == 2) {
-                i = new Intent(MainActivity.this, DetectTomatoActivity.class);
+                i = new Intent(MainActivity.this, DetectActivity.class);
                 Bitmap selectedImage = (Bitmap) imageReturnedIntent.getExtras().get("data");
                 i.putExtra("image", selectedImage);
+                i.putExtra("tanaman","Tomat");
                 try{
                     if(selectedImage!=null){ startActivity(i); }
                 }catch (Exception e){
                     Log.e("MainActivity", "Null selected");
                 }
             }else{
-                i = new Intent(MainActivity.this, DetectTomatoActivity.class);
+                i = new Intent(MainActivity.this, DetectActivity.class);
                 Uri uri = imageReturnedIntent.getData();
                 i.putExtra("uri", uri);
+                i.putExtra("tanaman","Tomat");
                 startActivity(i);
             }
         } catch (Exception e) {

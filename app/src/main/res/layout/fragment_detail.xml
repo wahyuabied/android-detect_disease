@@ -14,6 +14,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TableLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -23,100 +24,15 @@
                         android:textStyle="bold"
                         android:textColor="@color/colorAccent"
                         android:text="Hasil"/>
-                </TableRow>
-                <TableRow>
                     <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text="Daun"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text="Umur"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text="Suhu"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text="Diagnosa"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text="Fase"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text="Penyebab"/>
-                </TableRow>
-            </TableLayout>
-
-            <TableLayout
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TableRow>
-                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
                         android:textSize="8pt"
                         android:textStyle="bold"
                         android:textColor="@color/colorAccent"
                         android:text=":"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text=":"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text=":"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text=":"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text=":"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text=":"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:textSize="7pt"
-                        android:textColor="#000"
-                        android:text=":"/>
-                </TableRow>
-            </TableLayout>
 
-            <TableLayout
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TableRow>
                     <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
                         android:id="@+id/tv_hasil_fragmentSolution"
                         android:textSize="8pt"
                         android:textStyle="bold"
@@ -124,47 +40,116 @@
                 </TableRow>
                 <TableRow>
                     <TextView
+                        android:textSize="7pt"
+                        android:textColor="#000"
+                        android:text="Daun"/>
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:text=":"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
                         android:id="@+id/tv_daun_fragmentSolution"
                         android:textSize="7pt"
                         android:textColor="#000" />
                 </TableRow>
                 <TableRow>
                     <TextView
-                        android:id="@+id/tv_umur_fragmentSolution"
                         android:textSize="7pt"
-                        android:textColor="#000"/>
-                </TableRow>
-                <TableRow>
+                        android:textColor="#000"
+                        android:text="Suhu"/>
                     <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:text=":"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
                         android:id="@+id/tv_suhu_fragmentSolution"
                         android:textSize="7pt"
                         android:textColor="#000" />
                 </TableRow>
                 <TableRow>
                     <TextView
+                        android:textSize="7pt"
+                        android:textColor="#000"
+                        android:text="Diagnosa"/>
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:text=":"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
                         android:id="@+id/tv_diagnosa_fragmentSolution"
                         android:textSize="7pt"
                         android:textColor="#000" />
                 </TableRow>
                 <TableRow>
                     <TextView
+                        android:textSize="7pt"
+                        android:textColor="#000"
+                        android:text="Fase"/>
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:text=":"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
                         android:id="@+id/tv_fase_fragmentSolution"
                         android:textSize="7pt"
                         android:textColor="#000" />
                 </TableRow>
                 <TableRow>
                     <TextView
+                        android:textSize="7pt"
+                        android:textColor="#000"
+                        android:text="Penyebab"/>
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:text=":"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
                         android:id="@+id/tv_penyebab_fragmentSolution"
                         android:textSize="7pt"
                         android:textColor="#000" />
                 </TableRow>
-            </TableLayout>
-        </LinearLayout>
+                <TableRow>
+                    <TextView
+                        android:textSize="7pt"
+                        android:textColor="#000"
+                        android:text="Gejala"/>
 
-        <ImageView
-            android:layout_gravity="center"
-            android:id="@+id/iv_solutionFragment"
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_120sdp" />
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:textSize="8pt"
+                        android:textStyle="bold"
+                        android:textColor="#000"
+                        android:text=":"/>
+
+                    <TextView
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:id="@+id/tv_gejala_fragmentSolution"
+                        android:textSize="7pt"
+                        android:layout_width="@dimen/_200sdp"
+                        android:textColor="#000" />
+                </TableRow>
+            </TableLayout>
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -40,18 +40,21 @@
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-    <ProgressBar
-        android:id="@+id/pb_pestisidaActivity"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_width="@dimen/_30sdp"
-        android:layout_height="@dimen/_30sdp" />
 
     <WebView
-        android:layout_marginTop="@dimen/_3sdp"
-        android:visibility="gone"
+        android:layout_marginTop="-200dp"
         android:id="@+id/wv_pestisidaActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+    <Button
+        android:id="@+id/btn_buy_pestisidaActivity"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:text="Beli Pestisida"
+        android:textColor="#fff"
+        android:textSize="9pt"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_height="@dimen/_50sdp" />
 
 </RelativeLayout>

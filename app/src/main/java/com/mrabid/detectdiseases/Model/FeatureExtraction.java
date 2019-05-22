@@ -9,6 +9,7 @@ public class FeatureExtraction implements Serializable {
     private String standart_deviasi;
     private String saved_path;
     private String penyakit;
+    private String fase;
 
     public FeatureExtraction(){
         super();
@@ -20,14 +21,15 @@ public class FeatureExtraction implements Serializable {
         this.standart_deviasi = featureExtraction.getStandart_deviasi();
         this.saved_path = featureExtraction.getSaved_path();
         this.penyakit = featureExtraction.getPenyakit();
+        this.fase = featureExtraction.getFase();
     }
 
-    public FeatureExtraction(String mean, String median, String standart_deviasi, String saved_path, String penyakit) {
-        this.mean = mean;
-        this.median = median;
-        this.standart_deviasi = standart_deviasi;
-        this.saved_path = saved_path;
-        this.penyakit = penyakit;
+    public String getFase() {
+        return fase;
+    }
+
+    public void setFase(String fase) {
+        this.fase = fase;
     }
 
     public int getId() {

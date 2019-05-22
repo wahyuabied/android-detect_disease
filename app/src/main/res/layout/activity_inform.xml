@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    android:orientation="vertical"
+    tools:context=".UI.InformActivity">
+
+    <android.support.v7.widget.CardView
+        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        app:cardCornerRadius="@dimen/_50sdp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:src="@drawable/logo"/>
+    </android.support.v7.widget.CardView>
+
+
+    <TextView
+        android:padding="@dimen/_20sdp"
+        android:textColor="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="    Detect Disease adalah aplikasi yang digunakan untuk mendeteksi penyakit Early Blight dan Late Blight pada tanaman kentang dan toman berdasarkan daun yang difoto.\n    Detect Disease memiliki tingkat akurasi kebenaran yang cukup tinggi yaitu 92% untuk tanaman kentang"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.CardView
+            android:layout_margin="@dimen/_10sdp"
+            app:cardPreventCornerOverlap="false"
+            app:cardCornerRadius="@dimen/_30sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:layout_width="@dimen/_60sdp"
+            app:cardElevation="5dp">
+                <ImageView
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:src="@drawable/abid"/>
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:text="Wahyu Abid A \nD4 IT Politeknik Elektronika Negeri Surabaya\nMahasiswa yang membuat aplikasi ini sebagai syarat kelulusan."/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
